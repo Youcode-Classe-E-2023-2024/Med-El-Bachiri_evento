@@ -21,3 +21,23 @@ use App\Http\Controllers\EventController;
 |
 */
 
+Route::get('/',[HomeController::class, 'index']);
+// auth
+Route::middleware('guest')->group(function () {
+    // login
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'login']);
+    // register
+    Route::get('/register', [RegisterController::class, 'index'])->name('register');
+    Route::post('/register', [RegisterController::class, 'register']);
+    // forgot pw
+    Route::get('/forgot-password', [ForgotPWController::class, 'index'])->name('password.forgot');
+    Route::post('/forgot-password', [ForgotPWController::class, 'send_reset_link']);
+    // reset pw
+    Route::get('/reset-password/{token}', [ResetPWController::class, 'index'])->name('password.reset');
+    Route::post('/reset-password', [ResetPWController::class, 'reset_pw'])->name('reset_pw');
+});
+
+// logout
+Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
+
