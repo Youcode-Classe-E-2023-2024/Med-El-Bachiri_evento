@@ -22,6 +22,8 @@ use App\Http\Controllers\EventController;
 */
 
 Route::get('/',[HomeController::class, 'index']);
+Route::get('/event/{event_id}', [DetailsController::class, 'index']);
+
 // auth
 Route::middleware('guest')->group(function () {
     // login
@@ -41,3 +43,9 @@ Route::middleware('guest')->group(function () {
 // logout
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
+Route::middleware('auth')->group(function (){
+    Route::post('/event/create', [EventController::class, 'create']);
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::put('/valid_event/{event_id}', [EventController::class, 'valid']);
+    Route::put('/not_valid_event/{event_id}', [EventController::class, 'not_valid']);
+});
