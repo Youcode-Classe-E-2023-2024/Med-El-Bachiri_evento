@@ -3,6 +3,11 @@
 @section('content')
 
     <div class="container py-8 max-w-7xl mx-auto">
+        @if(session('error'))
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+            <span class="font-medium">Error !</span> {{ session('error') }}
+        </div>
+        @endif
         <!-- Event Title -->
         <div class="event-title text-center mb-6">
             <h1 class="text-3xl font-bold">{{ $event->title }}</h1>
@@ -41,6 +46,7 @@
                         <div class="select-box--box">
                             <div class="select-box--container">
                                 <div class="select-box--selected-item text-sm">Acceptation Method : <span class="text-red-800 font-bold">{{ ucfirst($event->acceptation_method) }} </span></div>
+                                <div class="select-box--selected-item text-xs">Event Created by : <span class="text-red-800 italic">{{ $event->user->name }} </span></div>
                                 <div class="select-box--arrow"><span><i aria-hidden="true" role="presentation" class="remixicon-arrow-down-s-line "></i></span></div>
                             </div>
                         </div>
@@ -52,9 +58,14 @@
                                 {{ $event->price }} MAD
                             </div>
                         </div>
-                        <div class="w-1/2 pl-2">
-                            <button class="bg-red-800 hover:opacity-80 border border-gray-500 transition-all text-white px-4 py-2 rounded">Acheter maintenant</button>
-                        </div>
+                        @if($event->places_available > 0)
+                        <form action="/reserve_ticket/{{ $event->id }}" method="post" class="w-1/2 pl-2">
+                            @csrf
+                            <button type="submit" class="bg-red-800 hover:opacity-80 border border-gray-500 transition-all text-white px-4 py-2 rounded">Buy Now</button>
+                        </form>
+                        @else
+                            <p class="bg-gray-800  cursor-no-drop border border-red-800 transition-all text-white px-4 py-2 rounded">Run out of places</p>
+                        @endif
                     </div>
                     <p class="text-sm text-center mb-4">Vite !! Achetez rapidement vos tickets</p>
                     <!-- Event Countdown -->
