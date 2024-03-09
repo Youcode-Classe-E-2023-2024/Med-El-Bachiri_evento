@@ -40,7 +40,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
                                     <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd"></path>
                                 </svg>
-                                <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Subscribers</p>
+                                <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Categories</p>
                             </button>
                         </div>
                     </li>
@@ -50,8 +50,18 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
                                     <path fill-rule="evenodd" d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 18.375V5.625zM21 9.375A.375.375 0 0020.625 9h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zM10.875 18.75a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5zM3.375 15h7.5a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375zm0-3.75h7.5a.375.375 0 00.375-.375v-1.5A.375.375 0 0010.875 9h-7.5A.375.375 0 003 9.375v1.5c0 .207.168.375.375.375z" clip-rule="evenodd"></path>
                                 </svg>
-                                <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Event Validatione</p>
+                                <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Event Validation</p>
                             </button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="">
+                            <a href="/" class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize" type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
+                                    <path fill-rule="evenodd" d="M5.25 9a6.75 6.75 0 0113.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 01-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 11-7.48 0 24.585 24.585 0 01-4.831-1.244.75.75 0 01-.298-1.205A8.217 8.217 0 005.25 9.75V9zm4.502 8.9a2.25 2.25 0 104.496 0 25.057 25.057 0 01-4.496 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Home</p>
+                            </a>
                         </div>
                     </li>
                     <li>
@@ -60,47 +70,13 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
                                     <path fill-rule="evenodd" d="M5.25 9a6.75 6.75 0 0113.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 01-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 11-7.48 0 24.585 24.585 0 01-4.831-1.244.75.75 0 01-.298-1.205A8.217 8.217 0 005.25 9.75V9zm4.502 8.9a2.25 2.25 0 104.496 0 25.057 25.057 0 01-4.496 0z" clip-rule="evenodd"></path>
                                 </svg>
-                                <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Media</p>
-                            </button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="">
-                            <button onclick="showDiv('div5', this)" class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize" type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
-                                    <path fill-rule="evenodd" d="M5.25 9a6.75 6.75 0 0113.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 01-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 11-7.48 0 24.585 24.585 0 01-4.831-1.244.75.75 0 01-.298-1.205A8.217 8.217 0 005.25 9.75V9zm4.502 8.9a2.25 2.25 0 104.496 0 25.057 25.057 0 01-4.496 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">create template</p>
+                                <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Manage Users</p>
                             </button>
                         </div>
                     </li>
                 </ul>
                 <ul class="mb-4 flex flex-col gap-1">
-                    <li class="mx-3.5 mt-4 mb-2">
-                        <p class="block antialiased font-sans text-sm leading-normal text-white font-black uppercase opacity-75">auth pages</p>
-                    </li>
-                    {{--                    @if(auth()->user()->hasRole('admin'))--}}
-                    <li>
-                        <div onclick="showDiv('div6', this)" class="">
-                            <button class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize" type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
-                                    <path fill-rule="evenodd" d="M5.25 9a6.75 6.75 0 0113.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 01-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 11-7.48 0 24.585 24.585 0 01-4.831-1.244.75.75 0 01-.298-1.205A8.217 8.217 0 005.25 9.75V9zm4.502 8.9a2.25 2.25 0 104.496 0 25.057 25.057 0 01-4.496 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Roles</p>
-                            </button>
-                        </div>
-                    </li>
-                    <li>
-                        <div onclick="showDiv('div7', this)" class="">
-                            <button class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize" type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
-                                    <path fill-rule="evenodd" d="M5.25 9a6.75 6.75 0 0113.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 01-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 11-7.48 0 24.585 24.585 0 01-4.831-1.244.75.75 0 01-.298-1.205A8.217 8.217 0 005.25 9.75V9zm4.502 8.9a2.25 2.25 0 104.496 0 25.057 25.057 0 01-4.496 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">See Templates</p>
-                            </button>
-                        </div>
-                    </li>
-                    {{--                    @endif--}}
+
                     <li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -117,6 +93,10 @@
         </aside>
         @if(session('success'))
             <p class="text-green-900 border-2 p-2 border-green-800 rounded-lg bg-green-300 pl-96" >{{ session('success') }}</p>
+        @endif
+
+        @if(session('error'))
+            <p class="text-red-900 border-2 p-2 border-red-800 rounded-lg bg-red-300 pl-96" >{{ session('error') }}</p>
         @endif
 
         <!-- DIV 1 -->
@@ -396,71 +376,144 @@
 
         <!-- DIV 2 -->
         <div id="div2" class="p-4 xl:ml-80">
-            @if(true)
-                <div class="w-full xl:w-8/12 px-4 mx-auto mt-24">
-                    <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white ">
-                        <div class="rounded-t mb-0 px-4 py-3 border-0">
-                            <div class="flex flex-wrap items-center">
-                                <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-                                    <h3 class="font-semibold text-base text-blueGray-700">
-                                        Subscribers
-                                    </h3>
-                                </div>
-                                @if(true)
-                                    <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-                                        <a href="" class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
-                                            Send Mail to Subscribers
-                                        </a>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
+            <div class="capitalize mt-1 mb-16">
+                <nav aria-label="breadcrumb" class="w-max">
+                    <ol class="flex flex-wrap items-center w-full bg-opacity-60 rounded-md bg-transparent p-0 transition-all">
+                        <li class="flex items-center text-blue-gray-900 antialiased font-sans text-sm font-normal leading-normal cursor-pointer transition-colors duration-300 hover:text-light-blue-500">
+                            <a href="#">
+                                <p class="block antialiased font-sans text-sm leading-normal text-blue-900 font-normal opacity-50 transition-all hover:text-blue-500 hover:opacity-100">dashboard</p>
+                            </a>
+                            <span class="text-gray-500 text-sm antialiased font-sans font-normal leading-normal mx-2 pointer-events-none select-none">/</span>
+                        </li>
+                        <li class="flex items-center text-blue-900 antialiased font-sans text-sm font-normal leading-normal cursor-pointer transition-colors duration-300 hover:text-blue-500">
+                            <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">categories</p>
+                        </li>
+                    </ol>
+                </nav>
+                <h6 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-gray-900">categories</h6>
+            </div>
 
-                        <div class="block w-full overflow-x-auto">
-                            <table class="items-center w-full border-collapse text-blueGray-700  ">
-                                <thead class="thead-light ">
-                                <tr>
-                                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                        Email
-                                    </th>
-                                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                        Status
-                                    </th>
-                                    <th class="px-6 bg-blueGray-50 text-blueGray-700 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px"></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-{{--                                @foreach([1,2,3,4,5] as $member)--}}
-                                    <tr>
-                                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-{{--                                            {{ $member->email }}--}} hey
-                                        </th>
-                                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                                            @if(true)
-                                                Subscribed
-                                            @else
-                                                <span class="text-red-500">Unsubscribed</span>
-                                            @endif
-                                        </td>
-                                        @if(true)
-                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                <form action="/unsub_user/{admin@gmail.com}" method="post">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <button type="submit" class="bg-purple-200 p-2 rounded-xl shadow-sm border-purple-700 border-2 hover:shadow-xl hover:opacity-80">Unsubscribe User</button>
-                                                </form>
-                                            </td>
-                                        @endif
-                                    </tr>
-{{--                                @endforeach--}}
-                                </tbody>
-                            </table>
+            <button data-modal-target="category-modal" data-modal-toggle="category-modal" class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-800 dark:hover:bg-red-700 dark:focus:ring-blue-800 mb-2" type="button">
+                Create Category
+            </button>
+
+            <div id="category-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative p-4 w-full max-w-md max-h-full">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <!-- Modal header -->
+                        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                Create Category
+                            </h3>
+                            <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="category-modal">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="p-4 md:p-5">
+                            <form class="space-y-4" action="/category/create" method="post">
+                                @csrf
+                                <div>
+                                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category Name</label>
+                                    <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Comedy" required />
+                                </div>
+
+                                <button type="submit" class="w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                                    Create
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
-            @else
-                <h1 class="text-red-600 text-xl border-2 border-red-800 p-6 rounded-lg mx-auto">Err 2 : you don't have this permission</h1>
-            @endif
+            </div>
+            <!-- categories table here   -->
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Category ID
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Category Name
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Actions
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach(\App\Models\Category::all() as $category)
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ $category->id }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $category->name }}
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <a
+                                    data-modal-target="edit-category-modal"
+                                    data-modal-toggle="edit-category-modal"
+                                    data-category-id="{{ $category->id }}"
+                                    data-category-name="{{ $category->name }}"
+                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                    Edit
+                                </a>
+                                <form action="category/{{ $category->id }}/destroy" method="post" onsubmit="return confirm('Are you sure you want to delete this category?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline ml-2">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+
+                    </tbody>
+                </table>
+            </div>
+
+            {{--                                edit category form --}}
+            <div id="edit-category-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative p-4 w-full max-w-md max-h-full">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <!-- Modal header -->
+                        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                Update Category
+                            </h3>
+                            <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="edit-category-modal">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="p-4 md:p-5">
+                            <form action="/category/update" class="space-y-4" method="post">
+                                @method('PUT')
+                                @csrf
+                                <input type="hidden" name="category_id" id="edit-category-id">
+                                <div>
+                                    <label for="category_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category Name</label>
+                                    <input type="text" name="category_name" id="category_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Comedy" required />
+                                </div>
+                                <button type="submit" class="w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                                    Update Category
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{--                                edn edit category form --}}
+
         </div>
 
 
@@ -542,199 +595,130 @@
                         </div>
                     </div>
                 @endforeach
-
+                @if(count($events) === 0)
+                    <h1 class="text-red-800">No events was created yet !!!</h1>
+                @endif
             </div>
 
         </div>
-        </div>
-
 
         <!-- DIV 4 -->
-        <div id="div4" class="p-4 xl:ml-80">
-{{--            @if(true)--}}
-{{--                @foreach($all_media as $item)--}}
-                    <section class="pt-10 pb-10 bg-[#F3F4F6]">
-                        <div class="container">
-                            <div class="flex flex-wrap -mx-4">
-                                <div class="w-full md:w-1/2 xl:w-1/3 px-4">
-                                    <div class="bg-white rounded-lg overflow-hidden mb-10">
-{{--                                        <img src="{{ asset($item['url']) }}" alt="image" class="w-full">--}}
-                                        <div class="p-6 text-center">
-                                            <h3>
-{{--                                                {{ $item['id'] }}--}}
-                                            </h3>
-                                            <p class="text-base text-body-color leading-relaxed mb-4">
-{{--                                                {{ $item['name'] }}--}}
-                                            </p>
-{{--                                            @if(Auth::user()->hasPermissionTo('delete media') && $item['created_by'] === Auth::user()->id || Auth::user()->getRoleNames()->first() === 'admin')--}}
-                                                <form action="/delete_media/{media_id}" method="post">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="bg-red-200 inline-block py-2 px-6 border border-[#E5E7EB] rounded-full text-base text-body-color font-medium hover:border-primary hover:bg-primary hover:text-white transition">
-                                                        Delete Media
-                                                    </button>
-                                                </form>
-{{--                                            @endif--}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-{{--                @endforeach--}}
-{{--            @else--}}
-{{--                <h1 class="text-red-600 text-xl border-2 border-red-800 p-6 rounded-lg mx-auto">Err 4 : you don't have this permission</h1>--}}
-{{--            @endif--}}
-        </div>
-
-
-        <!-- DIV 5 -->
-        <div id="div5" class="p-4 xl:ml-80">
-{{--            @if(Auth::user()->hasPermissionTo('create template'))--}}
-                <!-- component -->
-                <div class="py-12">
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                            <div class="p-6 bg-white border-b border-gray-200">
-{{--                                <form method="POST" action="{{ route('template.store') }}">--}}
-                                    @csrf
-
-                                    <div class="mb-4">
-                                        <label class="text-xl text-gray-600">Title <span class="text-red-500">*</span></label><br>
-                                        <input type="text" class="border-2 border-gray-300 p-2 w-full" name="title" id="title" value="" required>
-                                    </div>
-                                    @error('title')
-                                    <p class="text-red-500">{{ $message }}</p>
-                                    @enderror
-
-                                    <div class="mb-8">
-                                        <label class="text-xl text-gray-600">Content <span class="text-red-500">*</span></label><br>
-                                        <textarea name="content" class="border-2 border-gray-500"></textarea>
-                                    </div>
-                                    @error('content')
-{{--                                    <p class="text-red-500">{{ $message }}</p>--}}
-                                    @enderror
-
-                                    <div class="flex p-1">
-                                        <button type="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400">Submit</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <script>
-                    CKEDITOR.replace('content');
-                </script>
-{{--            @else--}}
-                <h1 class="text-red-600 text-xl border-2 border-red-800 p-6 rounded-lg mx-auto">Err 5 : you don't have this permission</h1>
-{{--            @endif--}}
-        </div>
-
-
-        <!-- DIV 6 -->
-        <div id="div6" class="p-4 xl:ml-80">
-{{--            @if(Auth::user()->hasPermissionTo('manage roles'))--}}
-
-                <div class="flex items-center justify-center min-h-screen bg-gray-900">
-                    <div class="col-span-12">
-                        <div class="overflow-auto lg:overflow-visible ">
-                            <table class="table text-gray-400 border-separate space-y-6 text-sm">
-                                <thead class="bg-gray-800 text-gray-500">
-                                <tr>
-                                    <th class="p-3">ID</th>
-                                    <th class="p-3">Name</th>
-                                    <th class="p-3">Email</th>
-                                    <th class="p-3">Account Created At</th>
-                                    <th class="p-3">Roles</th>
+        <div id="div4" class="p-4 xl:ml-80 bg-white h-screen overflow-hidden">
+            <div class="capitalize mt-1 mb-16">
+                <nav aria-label="breadcrumb" class="w-max">
+                    <ol class="flex flex-wrap items-center w-full bg-opacity-60 rounded-md bg-transparent p-0 transition-all">
+                        <li class="flex items-center text-blue-gray-900 antialiased font-sans text-sm font-normal leading-normal cursor-pointer transition-colors duration-300 hover:text-light-blue-500">
+                            <a href="#">
+                                <p class="block antialiased font-sans text-sm leading-normal text-blue-900 font-normal opacity-50 transition-all hover:text-blue-500 hover:opacity-100">dashboard</p>
+                            </a>
+                            <span class="text-gray-500 text-sm antialiased font-sans font-normal leading-normal mx-2 pointer-events-none select-none">/</span>
+                        </li>
+                        <li class="flex items-center text-blue-900 antialiased font-sans text-sm font-normal leading-normal cursor-pointer transition-colors duration-300 hover:text-blue-500">
+                            <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">Manage Users</p>
+                        </li>
+                    </ol>
+                </nav>
+                <h6 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-gray-900">Manage Users</h6>
+            </div>
+            <div class="flex items-center justify-center">
+                <div class="col-span-12">
+                    <div class="overflow-y-auto max-h-full">
+                        <table class="table text-gray-400 border-separate space-y-6 text-sm">
+                            <thead class="bg-gray-800 text-gray-500">
+                            <tr>
+                                <th class="p-3">ID</th>
+                                <th class="p-3">Name</th>
+                                <th class="p-3">Email</th>
+                                <th class="p-3">Account Created At</th>
+                                <th class="p-3">Roles</th>
+                                <th class="p-3">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach(\App\Models\User::all() as $single_user)
+                                <tr class="bg-gray-800">
+                                    <td class="p-3">{{ $single_user->id }}</td>
+                                    <td class="p-3">{{ $single_user->name }}</td>
+                                    <td class="p-3">{{ $single_user->email }}</td>
+                                    <td class="p-3">{{ $single_user->created_at }}</td>
+                                    <td class="p-3">
+                                        <form action="/update_user_role/{{ $single_user->id }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <label for="role"></label>
+                                            <select name="role" id="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500">
+                                                @foreach(\Spatie\Permission\Models\Role::all() as $role)
+                                                    <option value="{{ $role->name }}" {{ $role->name === $single_user->getRoleNames()->first() ? 'selected' : '' }}>{{ $role->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            <button type="submit" class="text-gray-400 hover:text-gray-100 mr-2">
+                                                <i class="material-icons-outlined text-base text-green-400 px-2 hover:underline">save</i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td class="p-3">
+                                        <form action="/delete_user/{{ $single_user->id }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-red-400 hover:text-red-600">
+                                                <i class="material-icons-outlined text-base px-2">delete</i>
+                                            </button>
+                                        </form>
+                                    </td>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                <!-- Your PHP logic to fetch and display users from the database here -->
-                                <!-- Example row -->
-{{--                                @foreach(\App\Models\User::all() as $single_user)--}}
-                                    <tr class="bg-gray-800">
-                                        <td class="p-3">hey</td>
-                                        <td class="p-3">hey</td>
-                                        <td class="p-3">hey</td>
-                                        <td class="p-3">hey</td>
-                                        <td class="p-3">hey</td>
-                                        <td class="p-3">
-                                            <form action="/change_user_role" method="POST">
-                                                @csrf
-{{--                                                @method('PUT')--}}
-                                                <select name="role" class="bg-gray-800 border border-gray-600 text-white rounded-md px-2 py-1 focus:outline-none">
-{{--                                                    @foreach(['Admin', 'User', 'Organizer'] as $role) <!-- Replace with your actual roles -->--}}
-{{--                                                    <option value="{{ $role }}" {{ $single_user->getRoleNames()->first() === $role ? 'selected' : '' }}>{{ $role }}</option>--}}
-{{--                                                    @endforeach--}}
-                                                </select>
-                                                <button type="submit" class="text-gray-400 hover:text-gray-100 mr-2">
-                                                    <i class="material-icons-outlined text-base text-green-400 px-2 hover:underline">save</i>
-                                                </button>
-                                            </form>
-                                        </td>
-
-                                    </tr>
-{{--                                @endforeach--}}
-                                </tbody>
-                            </table>
-                        </div>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+            </div>
 
-{{--            @else--}}
-                <h1 class="text-red-600 text-xl border-2 border-red-800 p-6 rounded-lg mx-auto">you don't have this permission</h1>
-{{--            @endif--}}
         </div>
 
-
-        <!-- DIV 7 -->
-        <div id="div7" class="p-4 xl:ml-80">
-{{--            @if(Auth::user()->hasPermissionTo('see templates'))--}}
-                <div class="overflow-y-auto">
-{{--                    @foreach($templates as $tmp)--}}
-                        <div class="border-red-500 border-2 rounded-lg p-2 my-2">
-                            <p class="p-2 m-2 border border-black text-black">this is title </p>
-                            this is content
-
-{{--                            @if(Auth::user()->hasPermissionTo('delete template'))--}}
-                                <form action="/" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class=" p-2 bg-gray-100 rounded-lg shadow-lg border-2 border-black bg-red-500">Delete Template</button>
-                                </form>
-                                {{--                            <form action="{{ route('download_template') }}" method="post"></form>--}}
-{{--                            @endif--}}
-                            <a href="/download_something" type="button" class="bg-purple-400 border border-black p-2 shadow-lg">Download Template</a>
-                        </div>
-{{--                    @endforeach--}}
-                </div>
-
-{{--            @else--}}
-{{--                <h1 class="text-red-600 text-xl border-2 border-red-800 p-6 rounded-lg mx-auto">you don't have this permission</h1>--}}
-{{--            @endif--}}
-        </div>
     </div>
+    <script>
+        function showDiv(divId, button) {
+            var divs = document.querySelectorAll('div[id^="div"]');
+            divs.forEach(function(div) {
+                if (div.id === divId) {
+                    div.style.display = 'block';
+                } else {
+                    div.style.display = 'none';
+                }
+            });
+
+            var buttons = document.querySelectorAll('button');
+            buttons.forEach(function(btn) {
+                btn.style.backgroundColor = '';
+            });
+
+            button.style.backgroundColor = 'blue';
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const editLinks = document.querySelectorAll('[data-modal-toggle="edit-category-modal"]');
+
+            editLinks.forEach(function (editLink) {
+                editLink.addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    const categoryId = editLink.dataset.categoryId;
+                    const categoryName = editLink.dataset.categoryName;
+
+                    const categoryIdInput = document.getElementById('edit-category-id');
+                    categoryIdInput.value = categoryId;
+
+                    const categoryNameInput = document.getElementById('category_name');
+                    categoryNameInput.value = categoryName;
+
+                    const modalTarget = editLink.dataset.modalTarget;
+                    const modal = document.getElementById(modalTarget);
+                    modal.classList.remove('hidden');
+                    document.body.classList.add('overflow-hidden');
+                });
+            });
+        });
+
+    </script>
 @endsection
-
-<script>
-    function showDiv(divId, button) {
-        var divs = document.querySelectorAll('div[id^="div"]');
-        divs.forEach(function(div) {
-            if (div.id === divId) {
-                div.style.display = 'block';
-            } else {
-                div.style.display = 'none';
-            }
-        });
-
-        var buttons = document.querySelectorAll('button');
-        buttons.forEach(function(btn) {
-            btn.style.backgroundColor = '';
-        });
-
-        button.style.backgroundColor = 'blue';
-    }
-</script>
 
