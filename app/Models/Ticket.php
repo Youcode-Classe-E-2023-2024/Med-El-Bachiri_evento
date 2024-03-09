@@ -9,13 +9,15 @@ class Ticket extends Model
 {
     use HasFactory;
 
+    public $fillable = ['ticket_code', 'event_id', 'user_id', 'reserved', 'event_creator_id'];
+
     public function event()
     {
-        $this->belongsTo(Event::class);
+        return $this->belongsTo(Event::class);
     }
 
     public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 }
