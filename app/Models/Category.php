@@ -14,6 +14,6 @@ class Category extends Model
 
     public function event()
     {
-        $this->belongsTo(Event::class, );
+        $this->belongsTo(Event::class);
     }
 }
