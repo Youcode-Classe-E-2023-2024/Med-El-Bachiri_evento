@@ -1,11 +1,22 @@
 @extends('layouts.app')
 @section('content')
+
     <section class="pt-20 lg:pt-[120px] pb-10 lg:pb-20 bg-[#F3F4F6]">
         <div class="container max-w-7xl mx-auto">
+            @if(session('error'))
+                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    <span class="font-medium">Error !</span> {{ session('error') }}
+                </div>
+            @endif
             <div class="flex flex-wrap -mx-4">
                 @foreach($events as $event)
                     <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-2 md:px-4 mb-4">
-                        <div class="bg-white rounded-lg overflow-hidden">
+                        <div class="bg-white rounded-lg overflow-hidden border-2 relative">
+                            @auth
+                            @if(Auth::user()->id === $event->user_id)
+                                <p class="absolute border-2 border-red-800 p-1 bg-red-900 opacity-80 text-white rounded-lg m-2 w-fit text-sm">MINE</p>
+                            @endif
+                            @endauth
                             <img src="https://cdn.tailgrids.com/1.0/assets/images/cards/card-01/image-01.jpg" alt="image" class="w-full" />
                             <div class="p-6">
                                 <h3>
