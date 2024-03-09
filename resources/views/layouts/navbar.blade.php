@@ -14,38 +14,51 @@
             <div class="flex justify-around">
                 <div class="flex justify-end ">
                     @auth
-                        @if(Auth::user()->hasAnyRole(['Organizer', 'Admin']))
-                        <main class=" w-full place-items-center bg-gray-100">
-                            <!-- component -->
-                            <button
-                                data-modal-target="crud-modal" data-modal-toggle="crud-modal"
-                                class="group relative px-4 py-1 overflow-hidden rounded-lg bg-white text-lg shadow"
-                            >
-                                <div class="absolute inset-0 w-3 bg-red-800 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
-                                <span class="relative text-lg text-black group-hover:text-white">Create Event</span>
-                            </button>
-                        </main>
-                        @endif
-                        @if(Auth::user()->getRoleNames()->first() === 'Admin')
-                            <main class=" w-full place-items-center bg-gray-100">
-                                <!-- component -->
-                                <button
-                                    onclick="window.location.href = '/dashboard';"
-                                    class="group relative px-4 py-1 overflow-hidden rounded-lg bg-white text-lg shadow"
-                                >
-                                    <div class="absolute inset-0 w-3 bg-gray-800 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
-                                    <span class="relative text-lg text-black group-hover:text-white">Dashboard</span>
-                                </button>
-                            </main>
-                        @endif
-                        <form
-                            class=" whitespace-nowrap text-base  text-gray-500 hover:text-gray-900"
-                            action="/logout"
-                            method="post" >
-                            @csrf
-                            <img class="m-1 inline-block h-5 w-5 rounded-full ring-2 ring-white" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" alt="">
-                            <button type="submit">logout</button>
-                        </form>
+                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                            <div class="mr-4 text-black hover:text-red-800">
+                                <p class="text-sm">{{Auth::user()->name }} </p>
+                                <p class="" style="font-size: 10px;">{{ Auth::user()->email }}</p>
+                            </div>
+                            <svg  class="w-2.5 h-2.5 ms-2.5 text-red-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                            </svg>
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-red-100 rounded-lg shadow w-44 dark:bg-red-700 dark:divide-red-600">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-white" aria-labelledby="dropdownLargeButton">
+                                @if(Auth::user()->getRoleNames()->first() === 'Admin')
+                                <li>
+                                    <a href="/dashboard" class="block px-4 py-2 hover:bg-red-100 dark:hover:bg-red-600 dark:hover:text-white">Dashboard</a>
+                                </li>
+                                @endif
+                                @if(Auth::user()->hasAnyRole(['Organizer', 'Admin']))
+                                <li>
+                                    <a data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="block px-4 py-2 hover:bg-red-100 dark:hover:bg-red-600 dark:hover:text-white">Create Event</a>
+                                </li>
+
+                                <li>
+                                    <a href="/my/events" class="block px-4 py-2 hover:bg-red-100 dark:hover:bg-red-600 dark:hover:text-white">My Events</a>
+                                </li>
+                                <li>
+                                    <a onclick="notificationHandler(false)" class="block px-4 py-2 hover:bg-red-100 dark:hover:bg-red-600 dark:hover:text-white">Reservations</a>
+                                </li>
+                                @endif
+
+{{--                                <li>--}}
+{{--                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>--}}
+{{--                                </li>--}}
+                            </ul>
+                            <div class="py-1">
+                                <form action="/logout"
+                                      method="post"
+                                      class="block px-4 py-2 text-sm text-white hover:bg-red-100 dark:hover:bg-red-600 dark:text-gray-200 dark:hover:text-white">
+                                    @csrf
+                                    <button type="submit">
+                                        Log out
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     @else
                        <a
                            class=" whitespace-nowrap text-base  text-gray-500 hover:text-gray-900"
@@ -63,7 +76,7 @@
         <div style="overflow-x: auto; white-space: nowrap;" class=" flex flex-col md:flex-row justify-center md:space-y-0 text-center text-gray-500">
             <div class="flex">
                 @foreach(\App\Models\Category::all() as $cat)
-                    <button value="{{ $cat->name }}" class="cat_name hover:opacity-80" style="margin: 30px 30px;flex: 0 0 auto;">{{ $cat->name }}</button>
+                    <button value="{{ $cat->name }}" class="cat_name hover:opacity-80 text-gray-700 hover:text-red-700" style="margin: 30px 30px;flex: 0 0 auto;">{{ $cat->name }}</button>
                 @endforeach
             </div>
         </div>
@@ -171,4 +184,93 @@
             }
         });
     });
+</script>
+
+
+<div class="hidden w-full h-full bg-gray-800 bg-opacity-90 top-0 overflow-y-auto overflow-x-hidden fixed sticky-0" id="chec-div">
+    <div class="w-full absolute z-10 right-0 h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700" id="notification">
+        <div class="2xl:w-4/12 bg-gray-50 h-screen overflow-y-auto p-8 absolute right-0">
+            <div class="flex items-center justify-between">
+                <p tabindex="0" class="focus:outline-none text-2xl font-semibold leading-6 text-gray-800">Reservations</p>
+                <button role="button" aria-label="close modal" class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 rounded-md cursor-pointer" onclick="notificationHandler(false)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18" stroke="#4B5563" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M6 6L18 18" stroke="#4B5563" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+            @auth
+            @if(ticketsNotReserved()->isEmpty())
+                <p class="text-red-800 mt-10"> No reservation found !!!</p>
+            @else
+            @foreach(ticketsNotReserved() as $ticket)
+                <div class="w-full p-3 mt-4 bg-white rounded shadow flex flex-shrink-0">
+                <div tabindex="0" aria-label="group icon" role="img" class="focus:outline-none w-8 h-8 border rounded-full border-gray-200 flex flex-shrink-0 items-center justify-center">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M1.33325 14.6667C1.33325 13.2522 1.89516 11.8956 2.89535 10.8954C3.89554 9.89523 5.2521 9.33333 6.66659 9.33333C8.08107 9.33333 9.43763 9.89523 10.4378 10.8954C11.438 11.8956 11.9999 13.2522 11.9999 14.6667H1.33325ZM6.66659 8.66666C4.45659 8.66666 2.66659 6.87666 2.66659 4.66666C2.66659 2.45666 4.45659 0.666664 6.66659 0.666664C8.87659 0.666664 10.6666 2.45666 10.6666 4.66666C10.6666 6.87666 8.87659 8.66666 6.66659 8.66666ZM11.5753 10.1553C12.595 10.4174 13.5061 10.9946 14.1788 11.8046C14.8515 12.6145 15.2515 13.6161 15.3219 14.6667H13.3333C13.3333 12.9267 12.6666 11.3427 11.5753 10.1553ZM10.2266 8.638C10.7852 8.13831 11.232 7.52622 11.5376 6.84183C11.8432 6.15743 12.0008 5.41619 11.9999 4.66666C12.0013 3.75564 11.7683 2.85958 11.3233 2.06466C12.0783 2.21639 12.7576 2.62491 13.2456 3.2208C13.7335 3.81668 14.0001 4.56315 13.9999 5.33333C14.0001 5.80831 13.8987 6.27784 13.7027 6.71045C13.5066 7.14306 13.2203 7.52876 12.863 7.84169C12.5056 8.15463 12.0856 8.38757 11.6309 8.52491C11.1762 8.66224 10.6974 8.7008 10.2266 8.638Z"
+                            fill="#047857"
+                        />
+                    </svg>
+                </div>
+                <div class="pl-3 w-full">
+                    <div class="flex items-center justify-between w-full">
+                        <p tabindex="0" class="focus:outline-none text-sm leading-none"><span class="text-indigo-700">{{ $ticket->user->name }}</span> reserved :  <span class="text-indigo-700">{{ $ticket->event->title }}</span></p>
+                        <div tabindex="0" aria-label="close icon" role="button" class="flex pt-2">
+
+                            <form action="/ticket/{{ $ticket->id }}/approve" method="post">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit">
+                                    <svg class="mr-2 hover:opacity-60" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9 17.59L4.41 13L3 14.41L9 20.41L21 8.41L19.59 7L9 17.59Z" fill="#1EAE5D"/>
+                                    </svg>
+                                </button>
+                            </form>
+
+                            <form action="/ticket/{{ $ticket->id }}/deny" method="post">
+                                @method('DELETE')
+                                <button type="submit">
+                                    <svg class="hover:opacity-60" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13.41 12L18 16.59L16.59 18L12 13.41L7.41 18L6 16.59L10.59 12L6 7.41L7.41 6L12 10.59L16.59 6L18 7.41L13.41 12Z" fill="#FF5252"/>
+                                    </svg>
+                                </button>
+                            </form>
+
+
+
+                        </div>
+                    </div>
+                    <p tabindex="0" class="focus:outline-none text-xs leading-3 pt-1 text-gray-500">{{ $ticket->created_at->diffForHumans() }}</p>
+                </div>
+            </div>
+            @endforeach
+            @endif
+            @endauth
+
+        </div>
+    </div>
+</div>
+<script>
+    let notification = document.getElementById("notification");
+    let checdiv = document.getElementById("chec-div");
+    let flag3 = false;
+    const notificationHandler = () => {
+        if (!flag3) {
+            notification.classList.add("translate-x-full");
+            notification.classList.remove("translate-x-0");
+            setTimeout(function () {
+                checdiv.classList.add("hidden");
+            }, 1000);
+            flag3 = true;
+        } else {
+            setTimeout(function () {
+                notification.classList.remove("translate-x-full");
+                notification.classList.add("translate-x-0");
+            }, 1000);
+            checdiv.classList.remove("hidden");
+            document.getElementById('dropdownNavbar').classList.add('hidden');
+            flag3 = false;
+        }
+    };
 </script>
