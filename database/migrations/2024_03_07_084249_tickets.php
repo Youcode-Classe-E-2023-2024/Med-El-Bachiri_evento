@@ -15,8 +15,11 @@ return new class extends Migration
             'tickets',
             function (Blueprint $table) {
                 $table->id();
+                $table->string('ticket_code');
                 $table->foreignId('event_id')->constrained()->onDelete('cascade');
                 $table->foreignId('user_id')->constrained()->onDelete('cascade');
+                $table->boolean('reserved')->default(false);
+                $table->integer('event_creator_id');
                 $table->timestamps();
             }
         );
