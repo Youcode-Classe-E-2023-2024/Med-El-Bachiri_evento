@@ -9,6 +9,22 @@
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <style>
+        * {
+            scrollbar-width: 2px;
+            scrollbar-color: #f1f1f1 transparent;
+        }
+
+        /* Set the thumb color */
+        *::-webkit-scrollbar-thumb {
+            background-color: #eeeeee;
+        }
+
+        /* Set the track color */
+        *::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+    </style>
 </head>
 <body class="bg-gray-100">
 @if(str_contains(url()->current(), '/dashboard') === false)
