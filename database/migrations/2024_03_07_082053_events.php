@@ -22,7 +22,7 @@ return new class extends Migration
                 $table->integer('price');
                 $table->integer('places_available');
                 $table->date('date');
-                $table->foreignId('category_id')->constrained();
+                $table->foreignId('category_id')->constrained()->onDelete('cascade');
                 $table->foreignId('user_id')->constrained()->onDelete('cascade');
                 $table->boolean('validated');
                 $table->enum('acceptation_method', ['auto', 'manual']);
