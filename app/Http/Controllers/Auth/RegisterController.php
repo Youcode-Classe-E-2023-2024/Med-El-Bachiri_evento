@@ -28,16 +28,17 @@ class RegisterController extends Controller
             'email' => $request->input('email'),
             'password' => $request->input('password'),
         ]);
+        Auth::login($user);
 
         if ($usrCount === 0) {
             $user->assignRole('Admin');
+            return redirect('/dashboard');
         } elseif ($request->button === 'User') {
             $user->assignRole('User');
         } elseif ($request->button === 'Organizer') {
             $user->assignRole('Organizer');
         }
 
-        Auth::login($user);
-        return back();
+        return redirect('/');
     }
 }
