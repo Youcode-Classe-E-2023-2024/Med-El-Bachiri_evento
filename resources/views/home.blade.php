@@ -1,14 +1,33 @@
 @extends('layouts.app')
 @section('content')
 
-    <section class="pt-20 lg:pt-[120px] pb-10 lg:pb-20 bg-[#F3F4F6]">
+    <section class="pt-20 lg:pt-[0px] pb-10 lg:pb-20 bg-[#F3F4F6]">
+
+        <nav id="bar" class="flex  max-w-7xl mx-auto">
+            <div style="overflow-x: auto; white-space: nowrap;" class=" flex  md:space-y-0 text-center text-gray-500">
+                <div class="flex">
+                    @foreach(\App\Models\Category::all() as $cat)
+                        <button onclick="filterEventsByCategory(this, '{{ $cat->name }}')" value="{{ $cat->id }}" class="cat_name hover:opacity-80 text-gray-700 hover:text-red-700 py-1" style="margin: 30px 30px;flex: 0 0 auto;">{{ $cat->name }}</button>
+                    @endforeach
+                </div>
+            </div>
+        </nav>
+        <div class="max-w-7xl mx-auto mb-6">
+            <input id="searchEvent" class="leading-none h-fit focus:outline-none border-b-2 hover:border-b-3 border-red-800  w-5/6  mx-auto md:w-1/4 md:mt-0 md:mx-0 " type="text" placeholder=" Searsh..">
+        </div>
+
+
         <div class="container max-w-7xl mx-auto">
             @if(session('error'))
                 <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
                     <span class="font-medium">Error !</span> {{ session('error') }}
                 </div>
             @endif
-            <div class="flex flex-wrap -mx-4">
+                <p id="noData" class="text-red-800"></p>
+                <div class="flex flex-wrap -mx-4" id="showEventsHere">
+                @if($events->isEmpty())
+                    <p class="">no events found !</p>
+                @else
                 @foreach($events as $event)
                     <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-2 md:px-4 mb-4">
                         <div class="bg-white rounded-lg overflow-hidden border-2 relative">
@@ -17,6 +36,8 @@
                                 <p class="absolute border-2 border-red-800 p-1 bg-red-900 opacity-80 text-white rounded-lg m-2 w-fit text-sm">MINE</p>
                             @endif
                             @endauth
+                            <p class="absolute border-2 border-red-800 p-1 text-red-800 bg-white rounded-lg m-2 w-fit text-sm right-0">{{ $event->category->name }}</p>
+
                             <img src="https://cdn.tailgrids.com/1.0/assets/images/cards/card-01/image-01.jpg" alt="image" class="w-full" />
                             <div class="p-6">
                                 <h3>
@@ -58,7 +79,32 @@
                         </div>
                     </div>
                 @endforeach
+                @endif
             </div>
         </div>
     </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const container = document.querySelector('.categories-container');
+            const categories = document.querySelectorAll('.cat_name');
+            const categoryWidth = categories[0].offsetWidth;
+            const totalCategories = categories.length;
+
+            const containerWidth = categoryWidth * totalCategories;
+
+            container.style.width = containerWidth + 'px';
+
+            container.addEventListener('wheel', function(event) {
+                if (event.deltaY > 0) {
+                    container.scrollLeft += categoryWidth;
+                } else {
+                    container.scrollLeft -= categoryWidth;
+                }
+            });
+        });
+    </script>
+
+    <script src="{{ url('js/FilterAndSearch.js') }}"></script>
+
 @endsection
