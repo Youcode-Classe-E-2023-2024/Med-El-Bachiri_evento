@@ -1,37 +1,36 @@
 <!-- component -->
 <div class="border-b-2 shadow-md border-gray-100 pb-1">
     <div class="max-w-7xl mx-auto my-2 px-4 sm:px-6 ">
-        <div
-            class="flex flex-col-reverse md:flex-row min-w-full py-2 space-y-2 justify-center md:justify-between  md:space-x-10">
-            <input id="search" class="flex leading-none focus:outline-none border-b-2 hover:border-b-3 border-red-800  w-5/6 mt-12 mx-auto md:w-1/4 md:mt-0 md:mx-0 " type="text" placeholder=" Searsh.."><a
-                class="flex-1 md:self-start" href="/">
-                <div class="flex justify-center ">
+        <div class="flex flex-col md:flex-row justify-between items-center min-w-full py-2 space-y-2 md:space-x-10">
+
+            <a class="flex-1 md:self-start" href="/">
+                <div class="flex justify-start">
                     <div class="flex justify-center items-center">
-                        <span class=" pt-1 mx-3 whitespace-nowrap text-4xl italic font-light text-red-700 hover:text-gray-900">Evento.</span>
+                        <span class="pt-1 mx-3 whitespace-nowrap text-4xl italic font-light text-red-700 hover:text-gray-900">Evento.</span>
                     </div>
                 </div>
             </a>
-            <div class="flex justify-around">
-                <div class="flex justify-end ">
-                    @auth
-                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
-                            <div class="mr-4 text-black hover:text-red-800">
-                                <p class="text-sm">{{Auth::user()->name }} </p>
-                                <p class="" style="font-size: 10px;">{{ Auth::user()->email }}</p>
-                            </div>
-                            <svg  class="w-2.5 h-2.5 ms-2.5 text-red-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                            </svg>
-                        </button>
-                        <!-- Dropdown menu -->
-                        <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-red-100 rounded-lg shadow w-44 dark:bg-red-700 dark:divide-red-600">
-                            <ul class="py-2 text-sm text-gray-700 dark:text-white" aria-labelledby="dropdownLargeButton">
-                                @if(Auth::user()->getRoleNames()->first() === 'Admin')
+
+            <div class="flex items-center">
+                @auth
+                    <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                        <div class="mr-4 text-black hover:text-red-800">
+                            <p class="text-sm">{{ Auth::user()->name }}</p>
+                            <p class="" style="font-size: 10px;">{{ Auth::user()->email }}</p>
+                        </div>
+                        <svg class="w-2.5 h-2.5 ms-2.5 text-red-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                        </svg>
+                    </button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-red-100 rounded-lg shadow w-44 dark:bg-red-700 dark:divide-red-600">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-white" aria-labelledby="dropdownLargeButton">
+                            @if(Auth::user()->getRoleNames()->first() === 'Admin')
                                 <li>
                                     <a href="/dashboard" class="block px-4 py-2 hover:bg-red-100 dark:hover:bg-red-600 dark:hover:text-white">Dashboard</a>
                                 </li>
-                                @endif
-                                @if(Auth::user()->hasAnyRole(['Organizer', 'Admin']))
+                            @endif
+                            @if(Auth::user()->hasAnyRole(['Organizer', 'Admin']))
                                 <li>
                                     <a data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="block px-4 py-2 hover:bg-red-100 dark:hover:bg-red-600 dark:hover:text-white">Create Event</a>
                                 </li>
@@ -42,45 +41,31 @@
                                 <li>
                                     <a onclick="notificationHandler(false)" class="block px-4 py-2 hover:bg-red-100 dark:hover:bg-red-600 dark:hover:text-white">Reservations</a>
                                 </li>
-                                @endif
+                            @endif
 
-{{--                                <li>--}}
-{{--                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>--}}
-{{--                                </li>--}}
-                            </ul>
-                            <div class="py-1">
-                                <form action="/logout"
-                                      method="post"
-                                      class="block px-4 py-2 text-sm text-white hover:bg-red-100 dark:hover:bg-red-600 dark:text-gray-200 dark:hover:text-white">
-                                    @csrf
-                                    <button type="submit">
-                                        Log out
-                                    </button>
-                                </form>
-                            </div>
+                            {{-- <li>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                            </li> --}}
+                        </ul>
+                        <div class="py-1">
+                            <form action="/logout" method="post" class="block px-4 py-2 text-sm text-white hover:bg-red-100 dark:hover:bg-red-600 dark:text-gray-200 dark:hover:text-white">
+                                @csrf
+                                <button type="submit">
+                                    Log out
+                                </button>
+                            </form>
                         </div>
-                    @else
-                       <a
-                           class=" whitespace-nowrap text-base  text-gray-500 hover:text-gray-900"
-                           href="/login">
-                               <img class="m-1 inline-block h-5 w-5 rounded-full ring-2 ring-white" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" alt="">
-                               Sign in
-                       </a>
-                    @endauth
-                </div>
-
+                    </div>
+                @else
+                    <a class="whitespace-nowrap text-base text-gray-500 hover:text-gray-900" href="/login">
+                        <img class="m-1 inline-block h-5 w-5 rounded-full ring-2 ring-white" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" alt="">
+                        Sign in
+                    </a>
+                @endauth
             </div>
+
         </div>
     </div>
-    <nav id="bar" class="flex justify-center max-w-7xl mx-auto">
-        <div style="overflow-x: auto; white-space: nowrap;" class=" flex flex-col md:flex-row justify-center md:space-y-0 text-center text-gray-500">
-            <div class="flex">
-                @foreach(\App\Models\Category::all() as $cat)
-                    <button value="{{ $cat->name }}" class="cat_name hover:opacity-80 text-gray-700 hover:text-red-700" style="margin: 30px 30px;flex: 0 0 auto;">{{ $cat->name }}</button>
-                @endforeach
-            </div>
-        </div>
-    </nav>
 </div>
 
 @if(session('success'))
@@ -163,30 +148,6 @@
     </div>
 </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const container = document.querySelector('.categories-container');
-        const wrapper = document.querySelector('.category-wrapper');
-        const categories = document.querySelectorAll('.cat_name');
-        const categoryWidth = categories[0].offsetWidth;
-        const visibleCategories = 8;
-        const totalCategories = categories.length;
-
-        const containerWidth = categoryWidth * totalCategories;
-
-        container.style.width = containerWidth + 'px';
-
-        container.addEventListener('wheel', function(event) {
-            if (event.deltaY > 0) {
-                container.scrollLeft += categoryWidth;
-            } else {
-                container.scrollLeft -= categoryWidth;
-            }
-        });
-    });
-</script>
-
-
 <div class="hidden w-full h-full bg-gray-800 bg-opacity-90 top-0 overflow-y-auto overflow-x-hidden fixed sticky-0" id="chec-div">
     <div class="w-full absolute z-10 right-0 h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700" id="notification">
         <div class="2xl:w-4/12 bg-gray-50 h-screen overflow-y-auto p-8 absolute right-0">
@@ -229,6 +190,7 @@
                             </form>
 
                             <form action="/ticket/{{ $ticket->id }}/deny" method="post">
+                                @csrf
                                 @method('DELETE')
                                 <button type="submit">
                                     <svg class="hover:opacity-60" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -236,8 +198,6 @@
                                     </svg>
                                 </button>
                             </form>
-
-
 
                         </div>
                     </div>
