@@ -61,7 +61,12 @@
                         @if($event->places_available > 0)
                         <form action="/reserve_ticket/{{ $event->id }}" method="post" class="w-1/2 pl-2">
                             @csrf
+                            <input type="hidden" name="category_name" value="{{ $event->category->name }}">
+                            @if(Auth::user()->id !== $event->user_id)
                             <button type="submit" class="bg-red-800 hover:opacity-80 border border-gray-500 transition-all text-white px-4 py-2 rounded">Buy Now</button>
+                            @else
+                            <a href="#statistics" class="bg-green-800 hover:opacity-80 border border-gray-500 transition-all text-white px-4 py-2 rounded">View Statistics</a>
+                            @endif
                         </form>
                         @else
                             <p class="bg-gray-800  cursor-no-drop border border-red-800 transition-all text-white px-4 py-2 rounded">Run out of places</p>
@@ -92,4 +97,94 @@
 
         </div>
     </div>
+
+
+    @if($event->user_id === Auth::user()->id)
+
+
+        <div class="py-8 max-w-7xl mx-auto" id="statistics" style="display: flex; justify-content: space-between;">
+            <div style="width: 30%;">
+                <canvas id="confirmedReservationsChart" width="400" height="400"></canvas>
+            </div>
+            <div style="width: 30%;">
+                <canvas id="waitingForApprovalChart" width="400" height="400"></canvas>
+            </div>
+            <div style="width: 30%;">
+                <canvas id="newReservationsChart" width="400" height="400"></canvas>
+            </div>
+        </div>
+
+        <script>
+            var confirmedReservationsChart = new Chart(document.getElementById('confirmedReservationsChart'), {
+                type: 'bar',
+                data: {
+                    labels: ["Confirmed Reservations"],
+                    datasets: [{
+                        label: 'Confirmed Reservations',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1,
+                        data: [{{ $eventStatistics->confirmed_reservations }}]
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+
+            var waitingForApprovalChart = new Chart(document.getElementById('waitingForApprovalChart'), {
+                type: 'bar',
+                data: {
+                    labels: ["Reservations Waiting for Approval"],
+                    datasets: [{
+                        label: 'Reservations Waiting for Approval',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1,
+                        data: [{{ $eventStatistics->waiting_for_approval }}]
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+
+            var newReservationsChart = new Chart(document.getElementById('newReservationsChart'), {
+                type: 'line',
+                data: {
+                    labels: {!! json_encode($reservationsPerDay->pluck('date')) !!},
+                    datasets: [{
+                        label: 'New Reservations Each Day',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1,
+                        data: {!! json_encode($reservationsPerDay->pluck('count')) !!}
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+
+    @endif
+
 @endsection

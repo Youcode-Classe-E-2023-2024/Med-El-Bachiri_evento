@@ -16,6 +16,23 @@ class DetailsController extends Controller
         if ($event === null) {
             return abort(404);
         }
-        return view('pages.details', ['event' => $event]);
+        $eventStatistics = Event::withCount([
+            'ticket as confirmed_reservations' => function ($query) {
+                $query->where('reserved', true);
+            },
+            'ticket as waiting_for_approval' => function ($query) {
+                $query->where('reserved', false);
+            }
+        ])->findOrFail($request->event_id);
+
+        $reservationsPerDay = Event::find($request->event_id)
+            ->ticket()
+            ->selectRaw('DATE(created_at) as date')
+            ->selectRaw('COUNT(*) as count')
+            ->groupBy('date')
+            ->orderBy('date')
+            ->get();
+
+        return view('pages.details', compact('event', 'eventStatistics', 'reservationsPerDay'));
     }
 }
