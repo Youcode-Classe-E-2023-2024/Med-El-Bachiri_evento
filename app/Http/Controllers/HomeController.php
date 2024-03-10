@@ -11,6 +11,7 @@ class HomeController extends Controller
     {
         $events = Event::where('validated', true)
                         ->where('deleted', false)
+                        ->with('category')
                         ->get();
 
         return view('home', compact('events'));
