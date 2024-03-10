@@ -25,7 +25,7 @@
                 <ul class="mb-4 flex flex-col gap-1">
                     <li>
                         <div aria-current="page" class="active">
-                            <button onclick="showDiv('div1', this)" class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] w-full flex items-center gap-4 px-4 capitalize" type="button">
+                            <button id="homeDashBtn" onclick="showDiv('div1', this)" class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] w-full flex items-center gap-4 px-4 capitalize" type="button">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
                                     <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z"></path>
                                     <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z"></path>
@@ -80,7 +80,7 @@
                     <li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <button class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-red-400 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize bg-red-600" type="submit">
+                            <button class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-red-800" type="submit">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
                                     <path fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z" clip-rule="evenodd"></path>
                                 </svg>
@@ -101,7 +101,6 @@
 
         <!-- DIV 1 -->
         <div id="div1" class="p-4 xl:ml-80">
-            @if(true)
                 <nav class="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1">
                     <div class="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
                         <div class="capitalize">
@@ -169,8 +168,8 @@
                                 </svg>
                             </div>
                             <div class="p-4 text-right">
-                                <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Total Templates</p>
-                                <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">322</h4>
+                                <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Number of Events </p>
+                                <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">{{ count(\App\Models\Event::all()) }}</h4>
                             </div>
                         </div>
                         <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
@@ -180,10 +179,9 @@
                                 </svg>
                             </div>
                             <div class="p-4 text-right">
-                                <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Total Subscribers</p>
-                                <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">122</h4>
+                                <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Number of Organizers</p>
+                                <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">{{ \App\Models\User::role('Organizer')->count() }}</h4>
                             </div>
-
                         </div>
                         <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
                             <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-green-600 to-green-400 text-white shadow-green-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
@@ -192,10 +190,9 @@
                                 </svg>
                             </div>
                             <div class="p-4 text-right">
-                                <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">All Users</p>
-                                <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">44</h4>
+                                <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Number of Users</p>
+                                <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">{{ count(\App\Models\User::all()) }}</h4>
                             </div>
-
                         </div>
                         <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
                             <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-orange-600 to-orange-400 text-white shadow-orange-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
@@ -204,173 +201,86 @@
                                 </svg>
                             </div>
                             <div class="p-4 text-right">
-                                <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Total Media Uploaded</p>
-                                <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">443</h4>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
-                        <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
-                            <div class="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
-                                <div>
-                                    <h6 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-blue-gray-900 mb-1">Projects</h6>
-                                    <p class="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" aria-hidden="true" class="h-4 w-4 text-blue-500">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
-                                        </svg>
-                                        <strong>30 done</strong> this month
-                                    </p>
-                                </div>
-                                <button aria-expanded="false" aria-haspopup="menu" id=":r5:" class="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30" type="button">
-              <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currenColor" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" aria-hidden="true" class="h-6 w-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"></path>
-                </svg>
-              </span>
-                                </button>
-                            </div>
-                            <div class="p-6 overflow-x-scroll px-0 pt-0 pb-2">
-                                <table class="w-full min-w-[640px] table-auto">
-                                    <thead>
-                                    <tr>
-                                        <th class="border-b border-blue-gray-50 py-3 px-6 text-left">
-                                            <p class="block antialiased font-sans text-[11px] font-medium uppercase text-blue-gray-400">companies</p>
-                                        </th>
-                                        <th class="border-b border-blue-gray-50 py-3 px-6 text-left">
-                                            <p class="block antialiased font-sans text-[11px] font-medium uppercase text-blue-gray-400">budget</p>
-                                        </th>
-                                        <th class="border-b border-blue-gray-50 py-3 px-6 text-left">
-                                            <p class="block antialiased font-sans text-[11px] font-medium uppercase text-blue-gray-400">completion</p>
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td class="py-3 px-5 border-b border-blue-gray-50">
-                                            <div class="flex items-center gap-4">
-                                                <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold">Material XD Version</p>
-                                            </div>
-                                        </td>
-
-                                        <td class="py-3 px-5 border-b border-blue-gray-50">
-                                            <p class="block antialiased font-sans text-xs font-medium text-blue-gray-600">$14,000</p>
-                                        </td>
-                                        <td class="py-3 px-5 border-b border-blue-gray-50">
-                                            <div class="w-10/12">
-                                                <p class="antialiased font-sans mb-1 block text-xs font-medium text-blue-gray-600">60%</p>
-                                                <div class="flex flex-start bg-blue-gray-50 overflow-hidden w-full rounded-sm font-sans text-xs font-medium h-1">
-                                                    <div class="flex justify-center items-center h-full bg-gradient-to-tr from-blue-600 to-blue-400 text-white" style="width: 60%;"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-3 px-5 border-b border-blue-gray-50">
-                                            <div class="flex items-center gap-4">
-                                                <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold">Add Progress Track</p>
-                                            </div>
-                                        </td>
-                                        <td class="py-3 px-5 border-b border-blue-gray-50">
-                                            <p class="block antialiased font-sans text-xs font-medium text-blue-gray-600">$3,000</p>
-                                        </td>
-                                        <td class="py-3 px-5 border-b border-blue-gray-50">
-                                            <div class="w-10/12">
-                                                <p class="antialiased font-sans mb-1 block text-xs font-medium text-blue-gray-600">10%</p>
-                                                <div class="flex flex-start bg-blue-gray-50 overflow-hidden w-full rounded-sm font-sans text-xs font-medium h-1">
-                                                    <div class="flex justify-center items-center h-full bg-gradient-to-tr from-blue-600 to-blue-400 text-white" style="width: 10%;"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-3 px-5 border-b border-blue-gray-50">
-                                            <div class="flex items-center gap-4">
-                                                <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold">Fix Platform Errors</p>
-                                            </div>
-                                        </td>
-                                        <td class="py-3 px-5 border-b border-blue-gray-50">
-                                            <p class="block antialiased font-sans text-xs font-medium text-blue-gray-600">Not set</p>
-                                        </td>
-                                        <td class="py-3 px-5 border-b border-blue-gray-50">
-                                            <div class="w-10/12">
-                                                <p class="antialiased font-sans mb-1 block text-xs font-medium text-blue-gray-600">100%</p>
-                                                <div class="flex flex-start bg-blue-gray-50 overflow-hidden w-full rounded-sm font-sans text-xs font-medium h-1">
-                                                    <div class="flex justify-center items-center h-full bg-gradient-to-tr from-green-600 to-green-400 text-white" style="width: 100%;"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-3 px-5 border-b border-blue-gray-50">
-                                            <div class="flex items-center gap-4">
-                                                <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold">Launch our Mobile App</p>
-                                            </div>
-                                        </td>
-                                        <td class="py-3 px-5 border-b border-blue-gray-50">
-                                            <p class="block antialiased font-sans text-xs font-medium text-blue-gray-600">$20,500</p>
-                                        </td>
-                                        <td class="py-3 px-5 border-b border-blue-gray-50">
-                                            <div class="w-10/12">
-                                                <p class="antialiased font-sans mb-1 block text-xs font-medium text-blue-gray-600">100%</p>
-                                                <div class="flex flex-start bg-blue-gray-50 overflow-hidden w-full rounded-sm font-sans text-xs font-medium h-1">
-                                                    <div class="flex justify-center items-center h-full bg-gradient-to-tr from-green-600 to-green-400 text-white" style="width: 100%;"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-3 px-5 border-b border-blue-gray-50">
-                                            <div class="flex items-center gap-4">
-                                                <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold">Add the New Pricing Page</p>
-                                            </div>
-                                        </td>
-                                        <td class="py-3 px-5 border-b border-blue-gray-50">
-                                            <p class="block antialiased font-sans text-xs font-medium text-blue-gray-600">$500</p>
-                                        </td>
-                                        <td class="py-3 px-5 border-b border-blue-gray-50">
-                                            <div class="w-10/12">
-                                                <p class="antialiased font-sans mb-1 block text-xs font-medium text-blue-gray-600">25%</p>
-                                                <div class="flex flex-start bg-blue-gray-50 overflow-hidden w-full rounded-sm font-sans text-xs font-medium h-1">
-                                                    <div class="flex justify-center items-center h-full bg-gradient-to-tr from-blue-600 to-blue-400 text-white" style="width: 25%;"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    </tbody>
-                                </table>
+                                <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Number of Tickets Reserved</p>
+                                <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">{{ count(\App\Models\Ticket::where('reserved', true)->get()) }}</h4>
                             </div>
                         </div>
                     </div>
+
                 </div>
-                <div class="text-blue-gray-600">
-                    <footer class="py-2">
-                        <div class="flex w-full flex-wrap items-center justify-center gap-6 px-2 md:justify-between">
-                            <p class="block antialiased font-sans text-sm leading-normal font-normal text-inherit">© 2023, made with <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="-mt-0.5 inline-block h-3.5 w-3.5">
-                                    <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z"></path>
-                                </svg> by <a href="https://www.creative-tim.com" target="_blank" class="transition-colors hover:text-blue-500">Creative Tim</a> for a better web. </p>
-                            <ul class="flex items-center gap-4">
-                                <li>
-                                    <a href="https://www.creative-tim.com" target="_blank" class="block antialiased font-sans text-sm leading-normal py-0.5 px-1 font-normal text-inherit transition-colors hover:text-blue-500">Creative Tim</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.creative-tim.com/presentation" target="_blank" class="block antialiased font-sans text-sm leading-normal py-0.5 px-1 font-normal text-inherit transition-colors hover:text-blue-500">About Us</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.creative-tim.com/blog" target="_blank" class="block antialiased font-sans text-sm leading-normal py-0.5 px-1 font-normal text-inherit transition-colors hover:text-blue-500">Blog</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.creative-tim.com/license" target="_blank" class="block antialiased font-sans text-sm leading-normal py-0.5 px-1 font-normal text-inherit transition-colors hover:text-blue-500">License</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </footer>
+
+            <div style="display: flex; justify-content: space-between;">
+                <div style="width: 45%;">
+                    <canvas id="eventsByCategoryChart" width="400" height="400"></canvas>
                 </div>
-            @else
-                <h1 class="text-red-600 text-xl border-2 border-red-800 p-6 rounded-lg mx-auto">Err 1 :you don't have this permission</h1>
-            @endif
+                <div style="width: 45%;">
+                    <canvas id="eventsByAcceptationMethodChart" width="400" height="400"></canvas>
+                </div>
+            </div>
+
+            <script>
+                // Chart for Number of Events per Category
+                var categories = {!! json_encode($categories->pluck('name')) !!};
+                var eventsCount = {!! json_encode($categories->pluck('events_count')) !!};
+
+                var ctx1 = document.getElementById('eventsByCategoryChart').getContext('2d');
+                var eventsByCategoryChart = new Chart(ctx1, {
+                    type: 'bar',
+                    data: {
+                        labels: categories,
+                        datasets: [{
+                            label: 'Number of Events',
+                            data: eventsCount,
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+
+                // Chart for Percentage of Events by Acceptation Method
+                var acceptationMethods = {!! json_encode($acceptationMethods->pluck('acceptation_method')) !!};
+                var acceptationMethodCounts = {!! json_encode($acceptationMethods->pluck('count')) !!};
+
+                var ctx2 = document.getElementById('eventsByAcceptationMethodChart').getContext('2d');
+                var eventsByAcceptationMethodChart = new Chart(ctx2, {
+                    type: 'pie',
+                    data: {
+                        labels: acceptationMethods,
+                        datasets: [{
+                            label: 'Percentage of Events',
+                            data: acceptationMethodCounts,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+            </script>
         </div>
 
 
@@ -677,6 +587,8 @@
 
     </div>
     <script>
+        let homeDashBtn = document.querySelector('#homeDashBtn');
+        homeDashBtn.click();
         function showDiv(divId, button) {
             var divs = document.querySelectorAll('div[id^="div"]');
             divs.forEach(function(div) {
@@ -692,7 +604,7 @@
                 btn.style.backgroundColor = '';
             });
 
-            button.style.backgroundColor = 'blue';
+            button.style.backgroundColor = 'rgb(64,138,222)';
         }
 
         document.addEventListener('DOMContentLoaded', function () {
