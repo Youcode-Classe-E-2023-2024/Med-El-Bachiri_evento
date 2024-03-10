@@ -16,13 +16,15 @@ class TicketGenerated extends Mailable
 
     public $ticket;
     public $event;
+    public $category_name;
     /**
      * Create a new message instance.
      */
-    public function __construct(Ticket $ticket, $event)
+    public function __construct(Ticket $ticket, $event, $category_name)
     {
         $this->ticket = $ticket;
         $this->event = $event;
+        $this->category_name = $category_name;
     }
 
     /**
@@ -45,6 +47,7 @@ class TicketGenerated extends Mailable
             with: [
                 'ticket' => $this->ticket,
                 'event' => $this->event,
+                'category_name' => $this->category_name
             ],
         );
     }
