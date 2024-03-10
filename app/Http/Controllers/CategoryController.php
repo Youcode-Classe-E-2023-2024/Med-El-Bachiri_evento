@@ -9,27 +9,20 @@ class CategoryController extends Controller
 {
     public function create(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-        ]);
-        Category::create($validatedData);
+        Category::create($request->all());
         return back()->with('success', 'Category created successfully.');
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $category = Category::find($request->category_id);
-        $validatedData = $request->validate([
-            'category_name' => 'required',
-        ]);
-        $category->name = $request->category_name;
-        $category->save();
+        $category = Category::find($id);
+        $category->update($request->all());
         return back()->with('success', 'Category updated successfully.');
     }
 
-    public function destroy(Request $request)
+    public function destroy(Request $request, $id)
     {
-        $category = Category::find($request->category_id);
+        $category = Category::find($id);
         $category->delete();
         return back()->with('success', 'Category deleted successfully.');
     }

@@ -56,9 +56,10 @@ Route::middleware('auth')->group(function () {
         Route::put('/update_user_role/{user_id}', [UserController::class, 'update_role']);
         Route::delete('/delete_user/{user_id}', [UserController::class, 'delete_user']);
         // category mng
-        Route::post('/category/create', [CategoryController::class, 'create']);
+        Route::post('/category/create', [CategoryController::class, 'create'])->middleware(ValidateCategoryData::class);
         Route::delete('/category/{category_id}/destroy', [CategoryController::class, 'destroy']);
         Route::put('/category/update', [CategoryController::class, 'update']);
+        Route::put('/category/update', [CategoryController::class, 'update'])->middleware(ValidateCategoryData::class);
     });
 
     Route::middleware('role:Admin|Organizer')->group(function () {
