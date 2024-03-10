@@ -12,7 +12,7 @@ class HomeController extends Controller
         $events = Event::where('validated', true)
                         ->where('deleted', false)
                         ->with('category')
-                        ->get();
+                        ->paginate(8);
 
         return view('home', compact('events'));
     }

@@ -84,6 +84,10 @@
         </div>
     </section>
 
+    <div class="max-w-7xl mx-auto mb-10">
+        {{ $events->links() }}
+    </div>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const container = document.querySelector('.categories-container');
