@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\TicketGenerated;
+use App\Models\Category;
 use App\Models\Event;
 use App\Models\Ticket;
 use App\Models\User;
@@ -54,7 +55,7 @@ class TicketController extends Controller
         } elseif ($event->acceptation_method === 'auto') {
             $ticket->reserved = true;
             $ticket->save();
-            Mail::to(Auth::user()->email)->send(new TicketGenerated($ticket, $event));
+            Mail::to(Auth::user()->email)->send(new TicketGenerated($ticket, $event, $request->category_name));
             return back()->with('success', 'Your ticket was reserved successfully. Check your email!');
         }
     }
@@ -64,8 +65,8 @@ class TicketController extends Controller
         $ticket = Ticket::find($request->ticket_id);
         $ticket->reserved = true;
         $ticket->save();
-
-        Mail::to(User::find($ticket->user_id)->email)->send(new TicketGenerated($ticket, Event::findOrFail($ticket->event_id)));
+        $event = Event::findOrFail($ticket->event_id);
+        Mail::to(User::find($ticket->user_id)->email)->send(new TicketGenerated($ticket, $event, Category::where('id', $event->category_id)->get()->first()->name));
         return back()->with('success', 'Ticket was approved !!!');
     }
 
