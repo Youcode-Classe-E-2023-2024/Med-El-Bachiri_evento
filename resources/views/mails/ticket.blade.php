@@ -1,80 +1,258 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Your Ticket</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <style>
-        body {
+        @import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+
+        * {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background-image: url(https://images.unsplash.com/photo-1519666336592-e225a99dcd2f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1888&q=80);
-            background-size: cover;
-            background-position: center;
-            min-height: 100vh;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100vh;
+            display: grid;
+            font-family: "Staatliches", cursive;
+            background: #d83565;
+            color: black;
+            font-size: 14px;
+            letter-spacing: 0.1em;
+        }
+
+        .ticket {
+            margin: auto;
             display: flex;
-            justify-content: center;
+            background: white;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        }
+
+        .left {
+            display: flex;
+        }
+
+        .image {
+            height: 250px;
+            width: 250px;
+            background-image: url("https://media.pitchfork.com/photos/60db53e71dfc7ddc9f5086f9/1:1/w_1656,h_1656,c_limit/Olivia-Rodrigo-Sour-Prom.jpg");
+            background-size: contain;
+            opacity: 0.85;
+        }
+
+        .admit-one {
+            position: absolute;
+            color: darkgray;
+            height: 250px;
+            padding: 0 10px;
+            letter-spacing: 0.15em;
+            display: flex;
+            text-align: center;
+            justify-content: space-around;
+            writing-mode: vertical-rl;
+            transform: rotate(-180deg);
+        }
+
+        .admit-one span:nth-child(2) {
+            color: white;
+            font-weight: 700;
+        }
+
+        .left .ticket-number {
+            height: 250px;
+            width: 250px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            padding: 5px;
+        }
+
+        .ticket-info {
+            padding: 10px 30px;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: space-between;
             align-items: center;
         }
 
-        .ticket-container {
-            max-width: 400px;
+        .date {
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray;
+            padding: 5px 0;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .date span {
+            width: 100px;
+        }
+
+        .date span:first-child {
+            text-align: left;
+        }
+
+        .date span:last-child {
+            text-align: right;
+        }
+
+        .date .june-29 {
+            color: #d83565;
+            font-size: 20px;
+        }
+
+        .show-name {
+            font-size: 32px;
+            font-family: "Nanum Pen Script", cursive;
+            color: #d83565;
+        }
+
+        .show-name h1 {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #4a437e;
+        }
+
+        .time {
+            padding: 10px 0;
+            color: #4a437e;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .time span {
+            font-weight: 400;
+            color: gray;
+        }
+
+        .left .time {
+            font-size: 16px;
+        }
+
+
+        .location {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
             width: 100%;
-            background-color: #3b82f6;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            color: #fff;
+            padding-top: 8px;
+            border-top: 1px solid gray;
         }
 
-        .ticket-header {
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        .location .separator {
+            font-size: 20px;
         }
 
-        .ticket-header h2 {
-            margin: 0;
+        .right {
+            width: 180px;
+            border-left: 1px dashed #404040;
         }
 
-        .ticket-details {
-            padding: 20px;
+        .right .admit-one {
+            color: darkgray;
         }
 
-        .ticket-details h3 {
-            margin: 0 0 10px;
+        .right .admit-one span:nth-child(2) {
+            color: gray;
         }
 
-        .ticket-details p {
-            margin: 0 0 5px;
+        .right .right-info-container {
+            height: 250px;
+            padding: 10px 10px 10px 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .right .show-name h1 {
+            font-size: 18px;
         }
 
         .barcode {
-            position: relative;
-            left: 50%;
-            transform: translateX(-90px);
-            width: 0;
-            height: 0;
-            box-shadow: 1px 0 0 1px, 5px 0 0 1px, 10px 0 0 1px, 11px 0 0 1px, 15px 0 0 1px, 18px 0 0 1px, 22px 0 0 1px, 23px 0 0 1px, 26px 0 0 1px, 30px 0 0 1px, 35px 0 0 1px, 37px 0 0 1px, 41px 0 0 1px, 44px 0 0 1px, 47px 0 0 1px, 51px 0 0 1px, 56px 0 0 1px, 59px 0 0 1px, 64px 0 0 1px, 68px 0 0 1px, 72px 0 0 1px, 74px 0 0 1px, 77px 0 0 1px, 81px 0 0 1px, 85px 0 0 1px, 88px 0 0 1px, 92px 0 0 1px, 95px 0 0 1px, 96px 0 0 1px, 97px 0 0 1px, 101px 0 0 1px, 105px 0 0 1px, 109px 0 0 1px, 110px 0 0 1px, 113px 0 0 1px, 116px 0 0 1px, 120px 0 0 1px, 123px 0 0 1px, 127px 0 0 1px, 130px 0 0 1px, 131px 0 0 1px, 134px 0 0 1px, 135px 0 0 1px, 138px 0 0 1px, 141px 0 0 1px, 144px 0 0 1px, 147px 0 0 1px, 148px 0 0 1px, 151px 0 0 1px, 155px 0 0 1px, 158px 0 0 1px, 162px 0 0 1px, 165px 0 0 1px, 168px 0 0 1px, 173px 0 0 1px, 176px 0 0 1px, 177px 0 0 1px, 180px 0 0 1px;
+            height: 100px;
         }
+
+        .barcode img {
+            height: 100%;
+        }
+
+        .right .ticket-number {
+            color: gray;
+        }
+
     </style>
 </head>
 <body>
-<div class="ticket-container">
-    <div class="ticket-header">
-        <h2>Your Ticket Details</h2>
+
+<div class="container">
+    <div class="ticket created-by-anniedotexe">
+        <div class="left">
+            <div class="image">
+                <p class="admit-one">
+                    <span>{{ $category_name }}</span>
+                    <span>{{ $category_name }}</span>
+                    <span>{{ $category_name }}</span>
+                </p>
+                <div class="ticket-number">
+                    <p>
+                        # {{ $ticket->ticket_code }}
+                    </p>
+                </div>
+            </div>
+            <div class="ticket-info">
+                <p class="date">
+                    <span class="june-29">{{ \Carbon\Carbon::parse($event->date)->format('l j M Y') }}</span>
+                </p>
+                <div class="show-name">
+                    <h1>{{ $event->title }}</h1>
+                    <h2>{{ $event->city_name }}</h2>
+                </div>
+                <div class="time">
+                    <p>{{ $event->places_available }} <span>PLACE</span></p>
+                    <p>{{ $event->city_name }} <span>-</span> MOROCCO</p>
+                </div>
+                <p class="location"><span>{{ $event->price }} MAD</span>
+                    <span class="separator"><i class="far fa-smile"></i></span><span>{{ \App\Models\User::where('id', $ticket->user_id)->get()->first()->name }}</span>
+                </p>
+            </div>
+        </div>
+        <div class="right">
+            <p class="admit-one">
+                <span>{{ $category_name }}</span>
+                <span>{{ $category_name }}</span>
+                <span>{{ $category_name }}</span>
+            </p>
+            <div class="right-info-container">
+                <div class="show-name">
+                    <h1>{{ $event->title }}</h1>
+                </div>
+                <div class="time">
+                    <p>{{ \App\Models\User::where('id', $ticket->user_id)->get()->first()->name }}</p>
+                    <p>{{ \App\Models\User::where('id', $ticket->user_id)->get()->first()->email }}</p>
+                </div>
+                <div class="barcode">
+                    <img src="https://external-preview.redd.it/cg8k976AV52mDvDb5jDVJABPrSZ3tpi1aXhPjgcDTbw.png?auto=webp&s=1c205ba303c1fa0370b813ea83b9e1bddb7215eb" alt="QR code">
+                </div>
+                <p class="ticket-number">
+                    # {{ $ticket->ticket_code }}
+                </p>
+            </div>
+        </div>
     </div>
-    <div class="ticket-details">
-        <h3>Ticket Code : {{ $ticket->ticket_code }}</h3>
-        <h3>Event Location : {{ $event->city_name }}</h3>
-        <h4>Date : {{{ $event->date }}}</h4>
-        <h5>Event: {{ $event->title }}</h5>
-        <p>Description : {{ $event->description }}</p>
-        <p>Thank you {{ Auth::user()->name }}, for using our service!</p>
-        <button style="background-color: #00bb00; padding: 5px; border-radius: 10px; color: white;"> {{ $event->price }} MAD</button>
-    </div>
-    <div class="barcode"></div>
 </div>
 </body>
 </html>
