@@ -6,6 +6,8 @@ use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\ValidateCategoryData;
+use App\Http\Middleware\ValidateEventData;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ForgotPWController;
 use App\Http\Controllers\Auth\LoginController;
@@ -48,7 +50,6 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::post('/reserve_ticket/{event_id}', [TicketController::class, 'reserve_ticket']);
-    Route::post('/event/create', [EventController::class, 'create']);
 
     Route::middleware('role:Admin')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -58,15 +59,15 @@ Route::middleware('auth')->group(function () {
         // category mng
         Route::post('/category/create', [CategoryController::class, 'create'])->middleware(ValidateCategoryData::class);
         Route::delete('/category/{category_id}/destroy', [CategoryController::class, 'destroy']);
-        Route::put('/category/update', [CategoryController::class, 'update']);
         Route::put('/category/update', [CategoryController::class, 'update'])->middleware(ValidateCategoryData::class);
     });
 
     Route::middleware('role:Admin|Organizer')->group(function () {
+        Route::post('/event/create', [EventController::class, 'create'])->middleware(ValidateEventData::class);
         Route::put('/not_valid_event/{event_id}', [EventController::class, 'not_valid']);
         Route::get('/my/events', [EventController::class, 'my_events']);
         Route::get('/event/{event_id}/edit', [EventController::class, 'edit']);
-        Route::put('/event/{event_id}/update', [EventController::class, 'update']);
+        Route::put('/event/{event_id}/update', [EventController::class, 'update'])->middleware(ValidateEventData::class);
         Route::put('/ticket/{ticket_id}/approve', [TicketController::class, 'approve']);
         Route::delete('/ticket/{ticket_id}/deny', [TicketController::class, 'deny']);
     });

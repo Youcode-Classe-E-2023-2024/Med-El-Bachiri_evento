@@ -14,22 +14,7 @@ class EventController extends Controller
 {
     public function create(Request $request)
     {
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'city_name' => 'nullable|string',
-            'price' => 'required|numeric',
-            'places_available' => 'required|integer',
-            'date' => 'required|date',
-            'category_id' => 'required|exists:categories,id',
-            'acceptation_method' => 'required|string|in:auto,manual',
-        ]);
-
-        $validatedData['validated'] = false;
-        $validatedData['user_id'] = Auth::user()->id;
-
-        Event::create($validatedData);
-
+        Event::create($request->all());
         return back()->with('success', 'Event created successfully, wait for Admin validation.');
     }
 
@@ -84,18 +69,7 @@ class EventController extends Controller
             return abort(404);
         }
 
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'category_id' => 'required|exists:categories,id',
-            'description' => 'nullable|string',
-            'city_name' => 'nullable|string',
-            'date' => 'nullable|date',
-            'places_available' => 'nullable|integer',
-            'acceptation_method' => 'nullable|string|in:auto,manual',
-        ]);
-
-        $event->update($validatedData);
+        $event->update($request->all());
 
         return redirect('/my/events')->with('success', 'Event updated successfully.');
     }
